@@ -23,6 +23,9 @@ public class QueueView extends ThreePanel {
 	private final int MAX_QUEUE_SIZE = 20;
 	
 	@Override
+	/**
+	 * Clears the screen
+	 */
 	public void clear() {
 		queue.clear();
 		input.setText("");
@@ -30,6 +33,9 @@ public class QueueView extends ThreePanel {
 		content.repaint();
 	}
 	@Override
+	/**
+	 * Runs when the class starts
+	 */
 	protected void init(JPanel op) {
 		op.setLayout(new BoxLayout(op, BoxLayout.Y_AXIS));
 		
@@ -69,7 +75,9 @@ public class QueueView extends ThreePanel {
 	private class EnqueueAction implements ActionListener
 	{
 
-		@Override
+		/**
+		 * Default Action Listener for Enqueue Action
+		 */
 		public void actionPerformed(ActionEvent action) {
 			if(queue.size() > MAX_QUEUE_SIZE)
 			{
@@ -88,7 +96,9 @@ public class QueueView extends ThreePanel {
 	private class DequeueAction implements ActionListener
 	{
 
-		@Override
+		/**
+		 * Default Action Listener for Dequeue Action
+		 */
 		public void actionPerformed(ActionEvent action) {
 			String data = queue.poll();
 			if(data == null)
@@ -108,7 +118,9 @@ public class QueueView extends ThreePanel {
 	private class PeekAction implements ActionListener
 	{
 
-		@Override
+		/**
+		 * Default Action Listener for Peek Action
+		 */
 		public void actionPerformed(ActionEvent action) {
 			String data = queue.peek();
 			if(data == null)
@@ -131,10 +143,15 @@ public class QueueView extends ThreePanel {
 		private final static int CELL_HEIGHT = 20;
 		
 		private int firstPosition = 0;
-		
+		/**
+		 * QueueContent Constructor
+		 */
 		public QueueContent() {
 			queue = new LinkedList<String>();
 		}
+		/**
+		 * Increases the position
+		 */
 		public void increasePosition()
 		{
 			firstPosition++;
@@ -143,7 +160,9 @@ public class QueueView extends ThreePanel {
 				firstPosition = 10;
 			}
 		}
-		
+		/**
+		 * Desceases the position
+		 */
 		public void decreasePosition()
 		{
 			if(queue.size() < 10 && firstPosition > 0)
@@ -151,6 +170,9 @@ public class QueueView extends ThreePanel {
 				firstPosition--;
 			}
 		}
+		/**
+		 * Default paint component of Java
+		 */
 		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);

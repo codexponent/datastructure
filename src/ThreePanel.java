@@ -12,7 +12,9 @@ public class ThreePanel extends JPanel {
 	private JPanel infoPanel;
 	
 	private JTextArea infoText;
-	
+	/**
+	 * ThreePanel Constructor
+	 */
 	public ThreePanel()
 	{
 		setLayout(new BorderLayout());
@@ -36,24 +38,35 @@ public class ThreePanel extends JPanel {
 		
 		init(operationPanel);
 	}
-	
+	/**
+	 * Runs when the class starts - Overridden Method
+	 * @param operation
+	 */
 	protected void init(JPanel operation)	// method to be overridden by subclass
 	{
 		
 	}
-	
+	/**
+	 * Sets the information into the swing textView
+	 * @param text the string to be pasted 
+	 */
 	public void setInfo(String text)
 	{
 		infoText.setText(text);
 	}
 	
-	
+	/**
+	 * Sets the content of the datapanel
+	 * @param view reference to the JPanel View
+	 */
 	public void setContent(JPanel view)
 	{
 		if(dataPanel.getComponentCount() == 1) return;
 		dataPanel.add(view);
 	}
-	
+	/**
+	 * Clears the content of the screen
+	 */
 	public void clear()	// method to be overridden by subclass
 	{
 		

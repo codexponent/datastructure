@@ -25,6 +25,9 @@ public class SetView extends ThreePanel {
 	private final int MAX_SET_SIZE = 20;
 	
 	@Override
+	/**
+	 * Clear the screen
+	 */
 	public void clear() {
 		sets.clear();
 		addField.setText("");
@@ -32,6 +35,9 @@ public class SetView extends ThreePanel {
 		content.repaint();
 	}
 	
+	/**
+	 * Runs when the class starts
+	 */
 	@Override
 	protected void init(JPanel op) {
 		op.setLayout(new BoxLayout(op, BoxLayout.Y_AXIS));
@@ -73,7 +79,9 @@ public class SetView extends ThreePanel {
 	private class AddAction implements ActionListener
 	{
 
-		@Override
+		/**
+		 * Defaut action Listener for Add Action
+		 */
 		public void actionPerformed(ActionEvent action) {
 			if(sets.size() > MAX_SET_SIZE)
 			{
@@ -89,7 +97,9 @@ public class SetView extends ThreePanel {
 	private class RemoveAction implements ActionListener
 	{
 
-		@Override
+		/**
+		 * Default Action listener for Remove Action
+		 */
 		public void actionPerformed(ActionEvent action) {
 			boolean success = sets.remove(removeField.getText());
 			if(!success)
@@ -101,11 +111,16 @@ public class SetView extends ThreePanel {
 	}
 	
 	private class SetContent extends JPanel {
+		/**
+		 * SetContent Constructor
+		 */
 		public SetContent()
 		{
 			sets = new HashSet<String>();
 		}
-		
+		/**
+		 * Default Paint Component for Java
+		 */
 		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);

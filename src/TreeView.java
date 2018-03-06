@@ -17,6 +17,9 @@ public class TreeView extends ThreePanel {
 	private JTextField removeField;
 	private JLabel result;
 	
+	/**
+	 * Clears the screen
+	 */
 	@Override
 	public void clear() {
 		binaryTree.clear();
@@ -24,6 +27,9 @@ public class TreeView extends ThreePanel {
 		removeField.setText("");
 		content.repaint();
 	}
+	/**
+	 * Runs when the class starts
+	 */
 	@Override
 	protected void init(JPanel op) {
 		op.setLayout(new BoxLayout(op, BoxLayout.Y_AXIS));
@@ -86,7 +92,9 @@ public class TreeView extends ThreePanel {
 	
 	private class InsertAction implements ActionListener {
 
-		@Override
+		/**
+		 *	Default Action Listener for Insert Action
+		 */
 		public void actionPerformed(ActionEvent e) {
 			binaryTree.insert(insertField.getText());
 			content.repaint();
@@ -96,7 +104,9 @@ public class TreeView extends ThreePanel {
 	
 	private class PreOrderAction implements ActionListener {
 
-		@Override
+		/**
+		 * Default Action Listener for PreOrder Action
+		 */
 		public void actionPerformed(ActionEvent arg0) {
 			content.setMode(TreeContent.PRE_ORDER);
 			content.repaint();
@@ -106,7 +116,9 @@ public class TreeView extends ThreePanel {
 	
 	private class PostOrderAction implements ActionListener {
 
-		@Override
+		/**
+		 * Default Action Listener for PostOrder Action
+		 */
 		public void actionPerformed(ActionEvent arg0) {
 			content.setMode(TreeContent.POST_ORDER);
 			content.repaint();
@@ -116,7 +128,9 @@ public class TreeView extends ThreePanel {
 	
 	private class InOrderAction implements ActionListener {
 
-		@Override
+		/**
+		 * Default Action Listener for InOrder Action
+		 */
 		public void actionPerformed(ActionEvent arg0) {
 			content.setMode(TreeContent.IN_ORDER);
 			content.repaint();
@@ -126,7 +140,9 @@ public class TreeView extends ThreePanel {
 	
 	private class ShowTreeAction implements ActionListener {
 
-		@Override
+		/**
+		 * Default Action Listener for ShowTreeAction
+		 */
 		public void actionPerformed(ActionEvent e) {
 			content.setMode(TreeContent.TREE_DRAW);
 			content.repaint();
@@ -136,7 +152,9 @@ public class TreeView extends ThreePanel {
 	
 	private class TreeHAction implements ActionListener {
 
-		@Override
+		/**
+		 * Default Action Listener for TreeHAction
+		 */
 		public void actionPerformed(ActionEvent e) {
 			result.setText("height = " +binaryTree.treeHeight(binaryTree.root));
 		}
@@ -144,8 +162,10 @@ public class TreeView extends ThreePanel {
 	}
 	
 	private class RemoveAction implements ActionListener {
-
-		@Override
+		
+		/**
+		 * Default Action Listener for RemoveAction
+		 */
 		public void actionPerformed(ActionEvent e) {
 			binaryTree.remove(removeField.getText());
 			content.repaint();
@@ -163,6 +183,9 @@ public class TreeView extends ThreePanel {
 		public final static int PRE_ORDER = 2;
 		public final static int POST_ORDER = 3;
 		public final static int TREE_DRAW = 4;
+		/**
+		 * TreeContent Constructor
+		 */
 		public TreeContent() {
 			binaryTree = new BinaryTree();
 			binaryTree.insert("F");
@@ -173,6 +196,9 @@ public class TreeView extends ThreePanel {
 			binaryTree.insert("J");
 		}
 		@Override
+		/**
+		 * Default Paint Component of Java
+		 */
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			if(binaryTree.isEmpty())
@@ -203,11 +229,19 @@ public class TreeView extends ThreePanel {
 			}
 		}
 		
+		/**
+		 * Sets the mode
+		 * @param mode mode number
+		 */
 		public void setMode(int mode)
 		{
 			this.mode = mode;
 		}
-		
+		/**
+		 * Sets the order first
+		 * @param node BinaryTree of the node
+		 * @param g Graphics g
+		 */
 		private void preOrder(BinaryTree.Node node, Graphics g)
 		{	
 			if(node != null)
@@ -222,7 +256,11 @@ public class TreeView extends ThreePanel {
 				preOrder(node.right, g);
 			}
 		}
-		
+		/**
+		 * Sets the order
+		 * @param node BinaryTree of the node
+		 * @param g Graphics g
+		 */
 		private void inOrder(BinaryTree.Node node, Graphics g)
 		{
 			if(node != null)
@@ -238,7 +276,11 @@ public class TreeView extends ThreePanel {
 				inOrder(node.right,g);
 			}
 		}
-		
+		/**
+		 * Sets the order at last
+		 * @param node BinaryTree of the node
+		 * @param g Graphics g
+		 */
 		private void postOrder(BinaryTree.Node node, Graphics g)
 		{	
 			if(node != null)
@@ -253,7 +295,11 @@ public class TreeView extends ThreePanel {
 				g.drawString(node.data, x+CELL_WIDTH/2, y+16);
 			}
 		}
-		
+		/**
+		 * Draws the tree
+		 * @param node BinaryTree of the node
+		 * @param g Graphics g
+		 */
 		private void drawTree(BinaryTree.Node node, Graphics g)
 		{
 			int dx, dy, dx2, dy2;

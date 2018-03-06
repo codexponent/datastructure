@@ -22,6 +22,9 @@ public class StackView extends ThreePanel {
 	
 	private final int MAX_STACK_SIZE = 9;
 	
+	/**
+	 * runs when the class starts
+	 */
 	@Override
 	protected void init(JPanel op) {
 		op.setLayout(new BoxLayout(op, BoxLayout.Y_AXIS));
@@ -59,7 +62,9 @@ public class StackView extends ThreePanel {
 		setInfo("Stack is an abstract data type. It serves as collection of elements.\nPush add item to collection and pop remove the most recently added item.\nPeek operation access top element without modifying the stack.\n It is also called LIFO (Last in, first out).");
 	}
 	
-	
+	/**
+	 * Clears the Screen
+	 */
 	public void clear() {
 		stack.clear();
 		result.setText("");
@@ -68,7 +73,9 @@ public class StackView extends ThreePanel {
 	
 	private class PushAction implements ActionListener {
 
-		@Override
+		/**
+		 * Default Action Listener for push Action
+		 */
 		public void actionPerformed(ActionEvent action) {
 			if(stack.size() == MAX_STACK_SIZE)
 			{
@@ -87,7 +94,9 @@ public class StackView extends ThreePanel {
 	
 	private class PopAction implements ActionListener {
 
-		@Override
+		/**
+		 * Default Action Listener for Pop Action
+		 */
 		public void actionPerformed(ActionEvent e) {		
 			try {
 				result.setText(stack.pop());
@@ -102,7 +111,9 @@ public class StackView extends ThreePanel {
 	
 	private class PeekAction implements ActionListener {
 
-		@Override
+		/**
+		 * Default Action Listener for Peek Action
+		 */
 		public void actionPerformed(ActionEvent e) {
 			try {
 				result.setText(stack.peek());
@@ -120,12 +131,16 @@ public class StackView extends ThreePanel {
 		
 		private final static int CELL_WIDTH = 100;
 		private final static int CELL_HEIGHT = 20;
-		
+		/**
+		 * StackContent Constructor
+		 */
 		public StackContent()
 		{
 			stack = new Stack<String>();
 		}
-		
+		/**
+		 * Default Paint Component of Java
+		 */
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			if(stack.empty())

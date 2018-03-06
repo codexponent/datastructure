@@ -21,6 +21,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class GUI extends JPanel {
 	JTabbedPane tab;
+	/**
+	 * Function to run the Graphical User Interface
+	 */
 	public GUI()
 	{
 		super(new GridLayout(1,1));
@@ -36,13 +39,17 @@ public class GUI extends JPanel {
 		
 		setPreferredSize(new Dimension(800,600));
 	}
-	
+	/**
+	 * Clears the content of the screen
+	 */
 	public void clearContent()
 	{
 		ThreePanel currentTab = (ThreePanel)tab.getComponentAt(tab.getSelectedIndex());
 		currentTab.clear();
 	}
-	
+	/**
+	 * Prints the screen image
+	 */
 	public void screenShot() {
 		BufferedImage img = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_RGB);
 		this.paint(img.getGraphics());
@@ -56,8 +63,13 @@ public class GUI extends JPanel {
 			JOptionPane.showMessageDialog(null, "Image not Saved!!");
 		}
 	}
-	
-	private static JMenuBar createMenuBar(GUI gui, JFrame f)
+	/**
+	 * Defines the menu on the java swing
+	 * @param gui Default Graphical User Interface
+	 * @param f Default JFrame f
+	 * @return menu bar
+	 */
+	private static JMenuBar createMenuBar(final GUI gui, final JFrame f)
 	{
 		JMenuBar menuBar = new JMenuBar();
 		
@@ -84,7 +96,9 @@ public class GUI extends JPanel {
 		
 		save.addActionListener(new ActionListener() {
 
-			@Override
+			/**
+			 * Default Action Listener for save
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				gui.screenShot();
 			}
@@ -93,7 +107,9 @@ public class GUI extends JPanel {
 		
 		exit.addActionListener(new ActionListener() {
 
-			@Override
+			/**
+			 * Default Action Listener for Exit
+			 */
 			public void actionPerformed(ActionEvent e) {
 				f.dispose();
 			}
@@ -102,7 +118,9 @@ public class GUI extends JPanel {
 		
 		clear.addActionListener(new ActionListener() {
 
-			@Override
+			/**
+			 * Default Action Listener for Clear
+			 */
 			public void actionPerformed(ActionEvent e) {
 				gui.clearContent();
 			}
@@ -111,7 +129,9 @@ public class GUI extends JPanel {
 		
 		about.addActionListener(new ActionListener() {
 
-			@Override
+			/**
+			 * Default Action Listener for About
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Data structure");
 			}
@@ -119,7 +139,9 @@ public class GUI extends JPanel {
 		});
 		return menuBar;
 	}
-	
+	/**
+	 * Creates the frame and shows on the windows screen
+	 */
 	private static void createAndShow()
 	{
 		JFrame frame = new JFrame("Data structure");
@@ -132,7 +154,10 @@ public class GUI extends JPanel {
 		frame.pack();
 		frame.setVisible(true);
 	}
-
+	/**
+	 * Default main menu of java
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 		SwingUtilities.invokeLater(new Runnable() {
